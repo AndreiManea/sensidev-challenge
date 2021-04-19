@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, BrowserRouter as Router, Switch} from 'react-router-dom';
+import styled from 'styled-components'
+import background from './assets/img/background.jpg'
+import { PokemonPage } from './Components/pages/PokemonPage';
+import { PokemonsPage } from './Components/pages/PokemonsPage';
 
 function App() {
+
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContainer>
+      <Router>
+        <Switch>
+          <Route path="/" component={PokemonsPage} exact/> 
+          <Route path="/:id" component={PokemonPage} exact/> 
+        </Switch>
+      </Router>
+    </AppContainer>
   );
 }
+
+const AppContainer = styled.div`
+  background-image: url(${background});
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+`
 
 export default App;
